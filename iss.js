@@ -117,3 +117,48 @@ const nextISSTimesForMyLocation = function(callback) {
 
 // module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation };
 module.exports = { nextISSTimesForMyLocation };
+
+
+// const request = require('request');
+// const nextISSTimesForMyLocation = function(callback) {
+
+//     // empty for now
+
+//     request(`https://api.ipify.org/?format=json`, (error, response, body) => {
+
+//       if (error) {
+//         console.error(error);
+//       } else if (response.statusCode !== 200) {
+//         const msg = `Status Code ${response.statusCode} when fetching coordinates. Response: ${body}`;
+//         callback(Error(msg), null);
+//       } else {
+//         request(`https://freegeoip.app/json/${JSON.parse(body).ip}`, (error, response, body) => {
+
+//           if (error) {
+//             callback(error, null);
+//           } else if (response.statusCode !== 200) {
+//             const msg = `Status Code ${response.statusCode} when fetching IP. Response: ${body}`;
+//             callback(Error(msg), null);
+//           } else {
+
+//             request(`http://api.open-notify.org/iss-pass.json?lat=${JSON.parse(body).latitude}&lon=${JSON.parse(body).longitude}`, (error, response, body) => {
+
+//               if (error) {
+//                 callback(error, null);
+//               } else if (response === []) {
+//                 callback('Empty', null);
+//               } else if (response.statusCode !== 200) {
+//                 const msg = `Status Code ${response.statusCode} when fetching coordinates. Response: ${body}`;
+//                 callback(Error(msg), null);
+//               } else {
+//                 const issFlyDetails = JSON.parse(body);
+//                 callback(null, issFlyDetails);
+//               }
+//             });
+//           }
+//         });
+//       }
+//     })
+//   }
+//   // module.exports = { fetchMyIP, fetchCoordsByIP, fetchISSFlyOverTimes, nextISSTimesForMyLocation };
+// module.exports = { nextISSTimesForMyLocation };
